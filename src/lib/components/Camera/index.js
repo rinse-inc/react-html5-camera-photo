@@ -176,7 +176,7 @@ class Camera extends React.Component {
       isImageMirror,
       isDisplayStartCameraError,
       isFullscreen,
-      useTextButton,
+      useTextButton
     } = this.props;
 
     let videoStyles = getVideoStyles(this.state.isShowVideo, isImageMirror);
@@ -211,17 +211,15 @@ class Camera extends React.Component {
         />
 
         {useTextButton
-          ?
-          <TextButton
+          ? <TextButton
             buttonText={buttonText}
             isClicked={!this.state.isShowVideo}
             onClick={this.handleTakePhoto}
-            />
-          :
-          <CircleButton
+          />
+          : <CircleButton
             isClicked={!this.state.isShowVideo}
             onClick={this.handleTakePhoto}
-            />
+          />
         }
       </div>
     );
@@ -240,6 +238,7 @@ Camera.propTypes = {
   onTakePhoto: PropTypes.func,
   onTakePhotoAnimationDone: PropTypes.func,
   onCameraError: PropTypes.func,
+  buttonText: PropTypes.string,
   idealFacingMode: PropTypes.string,
   idealResolution: PropTypes.object,
   imageType: PropTypes.string,
@@ -252,11 +251,11 @@ Camera.propTypes = {
   sizeFactor: PropTypes.number,
   onCameraStart: PropTypes.func,
   onCameraStop: PropTypes.func,
-  useTextButton: PropTypes.bool,
+  useTextButton: PropTypes.bool
 };
 
 Camera.defaultProps = {
   isImageMirror: true,
   isDisplayStartCameraError: true,
-  useTextButton: false,
+  useTextButton: false
 };
