@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import LibCameraPhoto, { FACING_MODES, IMAGE_TYPES } from 'jslib-html5-camera-photo';
 
 import CircleButton from '../CircleButton';
+import TextButton from '../TextButton';
 import WhiteFlash from '../WhiteFlash';
 import DisplayError from '../DisplayError';
 
@@ -170,12 +171,18 @@ class Camera extends React.Component {
   }
 
   render () {
-    const {isImageMirror, isDisplayStartCameraError, isFullscreen} = this.props;
+    const {
+      isImageMirror,
+      isDisplayStartCameraError,
+      isFullscreen,
+      useTextButton,
+    } = this.props;
 
     let videoStyles = getVideoStyles(this.state.isShowVideo, isImageMirror);
     let showHideImgStyle = getShowHideStyle(!this.state.isShowVideo);
 
     let classNameFullscreen = isFullscreen ? 'react-html5-camera-photo-fullscreen' : '';
+
     return (
       <div className={'react-html5-camera-photo ' + classNameFullscreen}>
         <DisplayError
@@ -183,14 +190,17 @@ class Camera extends React.Component {
           isDisplayError={isDisplayStartCameraError}
           errorMsg={this.state.startCameraErrorMsg}
         />
+
         <WhiteFlash
           isShowWhiteFlash={!this.state.isShowVideo}
         />
+
         <img
           style={showHideImgStyle}
           alt="camera"
           src={this.state.dataUri}
         />
+
         <video
           style={videoStyles}
           ref={this.videoRef}
@@ -198,10 +208,19 @@ class Camera extends React.Component {
           muted="muted"
           playsInline
         />
-        <CircleButton
-          isClicked={!this.state.isShowVideo}
-          onClick={this.handleTakePhoto}
-        />
+
+        {useTextButton
+          ?
+          <TextButton
+            isClicked={!this.state.isShowVideo}
+            onClick={this.handleTakePhoto}
+            />
+          :
+          <CircleButton
+            isClicked={!this.state.isShowVideo}
+            onClick={this.handleTakePhoto}
+            />
+        }
       </div>
     );
   }
@@ -230,10 +249,12 @@ Camera.propTypes = {
   isFullscreen: PropTypes.bool,
   sizeFactor: PropTypes.number,
   onCameraStart: PropTypes.func,
-  onCameraStop: PropTypes.func
+  onCameraStop: PropTypes.func,
+  useTextButton: PropTypes.bool,
 };
 
 Camera.defaultProps = {
   isImageMirror: true,
-  isDisplayStartCameraError: true
+  isDisplayStartCameraError: true,
+  useTextButton: false,
 };
