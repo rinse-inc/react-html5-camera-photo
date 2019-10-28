@@ -11,7 +11,7 @@
     "predeployHtml": "npm run buildHtml",
     "deployHtml": "gh-pages -d build",
     "test": "node scripts/test.js --env=jsdom",
-    "prepublish": "npm run buildNpm",
+    "prepare": "npm run buildNpm",
     "eslint:src": "eslint --ignore-pattern !**/*.{test,mock}.js src/",
     "eslint:watch": "esw --color --ignore-pattern !**/*.{test,mock}.js src/ -w",
     "eslint:fix": "eslint --fix src/"
