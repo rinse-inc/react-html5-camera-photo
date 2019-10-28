@@ -1,0 +1,23 @@
+.text-button__container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.text-button__outer {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: .5em;
+  z-index: 1;
+}
+
+.text-button__inner {
+  background: white;
+  color: blue;
+  padding: 1em;
+}
+
+.text-button__inner.is-clicked {
+  background: black;
+  color: white;
+}
