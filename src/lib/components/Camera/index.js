@@ -172,6 +172,7 @@ class Camera extends React.Component {
 
   render () {
     const {
+      buttonText = 'Snap photo',
       isImageMirror,
       isDisplayStartCameraError,
       isFullscreen,
@@ -212,6 +213,7 @@ class Camera extends React.Component {
         {useTextButton
           ?
           <TextButton
+            buttonText={buttonText}
             isClicked={!this.state.isShowVideo}
             onClick={this.handleTakePhoto}
             />
