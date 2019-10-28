@@ -6,9 +6,10 @@ import './styles/circleButton.css';
 export const CircleButton = ({ onClick, isClicked }) => {
   const innerCircleClasses = isClicked ? 'is-clicked' : '';
   return (
-    <div id="container-circles">
+    <div id="container-circles" className="circle-button__container">
       <div
         id="outer-circle"
+        className="circle-button__outer"
         onClick = {
           (e) => {
             if (!isClicked) {
@@ -17,8 +18,9 @@ export const CircleButton = ({ onClick, isClicked }) => {
           }
         }
       >
-        <div id="inner-circle" className={innerCircleClasses}>
-        </div>
+        <div
+          id="inner-circle"
+          className={`circle-button__inner ${innerCircleClasses}`}></div>
       </div>
     </div>
   );
