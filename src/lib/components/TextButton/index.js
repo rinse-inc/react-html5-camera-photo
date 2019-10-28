@@ -8,7 +8,7 @@ export const TextButton = ({ onClick, isClicked, buttonText }) => {
   return (
     <div className="text-button__container">
       <div
-        className="text-button__button"
+        className="text-button__outer"
         onClick = {
           (e) => {
             if (!isClicked) {
@@ -17,7 +17,7 @@ export const TextButton = ({ onClick, isClicked, buttonText }) => {
           }
         }
       >
-        <div className={`text-button__text ${innerButtonClasses}`}>{buttonText}</div>
+        <div className={`text-button__inner ${innerButtonClasses}`}>{buttonText}</div>
       </div>
     </div>
   );
